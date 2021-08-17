@@ -6,10 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>蓝鸟引流官网</title>
 <meta name="Keywords" content="蓝鸟引流,蓝鸟官网,蓝鸟引流机器人,蓝鸟机器人,蓝鸟红包引流,蓝鸟名片赞引流,扩列引流,定时群发,樱花机器人官网,名片赞引流,蓝鸟群管,蓝鸟QQ群管机器人"/>
-<meta name="description" content="小储云商城系统是一款综合型在线自助下单程序!本站作为小储云官方授权平台,可为您提供程序正规运营运维,提供一条龙授权服务,优质服务体验"/>
+<meta name="description" content="蓝鸟插件是一款集超级群管和引流于一体的超级机器人软件，具有扩列引流，超级群管，自动加群，入群审核，关键词拦截，关键词撤回，关键词踢人，关键词回复，关键词私聊，定时群发，机器人出租，云黑名单，受邀自动进群，入群检测小号等级，加群自动检测昵称和签名，自定义XML卡片功能...各种完全自定义功能等"/>
 <link href="static/images/icon.ico" rel="icon">
-<link rel="stylesheet" href="static/css/layui.css"/>
-<link rel="stylesheet" href="static/css/main.css?v=200" />
+<script type="text/javascript" src="static/js/index.js"></script>
+
 
 <!--[if lt IE 9]>
 <script src="static/js/html5shiv.min.js"></script>
@@ -367,76 +367,6 @@
         </div>
     </div>
 </div>
-    <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/layui/2.6.8/layui.js"></script>
-    <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-        layui.config({
-            version: '1627194905069' //更新 js 缓存
-        });
-
-        layui.use(['layer'], function () { //引入需要的模块
-            var $ = layui.jquery
-                , layer = layui.layer //弹层
-				
-            /*layer.open({
-                title: '蓝鸟插件'
-                , content: '因服务器遭受到恶意CC攻击，实在抱歉，部分用户授权可能无法使用，请耐心等待恢复！'
-            });*/
-			
-			$('*[lay-tips]').on('mouseenter', function(){
-				var content = $(this).attr('lay-tips');
-				this.index = layer.tips(content , this, {
-				time: -1
-				,maxWidth: 280
-				,tips: [1, '#3A3D49']
-				});
-			}).on('mouseleave', function(){
-				layer.close(this.index);
-			});
-
-            $('#investigation').click(function () {
-                layer.open({
-                    title: '蓝鸟小调查'
-                    ,content: '随意选择下方一个问卷进行反馈即可，感谢支持！'
-                    ,btn: ['问卷一', '问卷二']
-                    ,yes: function(index, layero){
-                        window.open("https://wj.qq.com/s2/8899037/f397");
-                    }
-                    ,btn2: function(index, layero){
-                        window.open("https://docs.qq.com/form/page/DUHVCZ3FSbW5HS2JG");
-                    }
-                    ,cancel: function(){ 
-                        //右上角关闭回调
-                        //return false 开启该代码可禁止点击该按钮关闭
-                    }
-                });
-            });
-			
-            // 用户点击日志
-            $('#ulog').click(function () {
-				var index = layer.open({
-				  type: 2,
-				  title: '更新日志',
-				  content: './uplog.html',
-				  area: ['100%','100%'],
-				  maxmin: true
-				});
-				layer.full(index);
-            });
-
-			
-            // 用户点击授权
-            $('#auth,#auth1,#auth2,#auth3,#auth4').click(function () {
-                window.open("https://jq.qq.com/?_wv=1027&k=9vbaSzgN");
-            });
-			
-            // 用户点击下载
-            $('#down,#down1').click(function () {
-                window.open("https://www.lanzoui.com/s/xiaoniao8");
-            });
-        });
-
-    </script>
 <!-- 站长统计代码 -->
 <span style="display: none">
     <!-- 各类统计代码都放在这里…… -->
