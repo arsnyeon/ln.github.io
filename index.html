@@ -14,18 +14,6 @@
 <script src="static/js/html5shiv.min.js"></script>
 <script src="static/js/respond.min.js"></script>
 <![endif]-->
-		<script>
-			document.oncontextmenu = ()=>false;
-            let div = document.createElement('div');
-            let loop = setInterval(() => {
-              console.log(div);
-              console.clear();
-            },1);
-            Object.defineProperty(div,"id", {get: () => {
-              window.close();
-              location.href="about:blank";
-            }});
-        </script>
 </head>
 <body oncontextmenu=self.event.returnValue=false onselectstart="return false">
 <!-- header -->
@@ -60,7 +48,7 @@
 				</dl>
            </li>
             <li class="layui-nav-item nav-btn-login"><a href="javascript:void(0);" id="auth">立即体验</a></li>
-            <li class="layui-nav-item nav-btn-login"><a href="javascript:void(0);" id="cxsq">授权查询</a></li>
+            <li class="layui-nav-item nav-btn-login"><a href="javascript:void(0);" id="selfauth">自助授权</a></li>
         </ul>
     </div>
 </div>
