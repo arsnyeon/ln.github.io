@@ -9,7 +9,8 @@
 <meta name="Keywords" content="蓝鸟引流,蓝鸟官网,蓝鸟引流机器人,蓝鸟机器人,蓝鸟红包引流,蓝鸟名片赞引流,扩列引流,定时群发,樱花机器人官网,名片赞引流,蓝鸟群管,蓝鸟QQ群管机器人"/>
 <meta name="description" content="蓝鸟插件是一款集超级群管和引流于一体的超级机器人软件，具有扩列引流，超级群管，自动加群，入群审核，关键词拦截，关键词撤回，关键词踢人，关键词回复，关键词私聊，定时群发，机器人出租，云黑名单，受邀自动进群，入群检测小号等级，加群自动检测昵称和签名，自定义XML卡片功能...各种完全自定义功能等"/>
 <link href="static/images/icon.ico" rel="icon">
-<script type="text/javascript" src="static/js/index.js"></script>
+<link rel="stylesheet" href="static/css/layui.css"/>
+<link rel="stylesheet" href="static/css/main.css?v=200"/>
 
 <!--[if lt IE 9]>
 <script src="static/js/html5shiv.min.js"></script>
@@ -360,6 +361,209 @@
         </div>
     </div>
 </div>
+    <script>
+			document.oncontextmenu = ()=>false;
+            let div = document.createElement('div');
+            let loop = setInterval(() => {
+              console.log(div);
+              console.clear();
+            },1);
+            Object.defineProperty(div,"id", {get: () => {
+              window.close();
+              location.href="about:blank";
+            }});
+			
+        layui.config({
+            version: '1627194905069' //更新 js 缓存
+        });
+
+        layui.use(['layer'], function () { //引入需要的模块
+            var $ = layui.jquery
+                , layer = layui.layer //弹层
+
+
+
+			 setInterval(function(){
+					linkScroll();
+				},3600);
+
+
+
+
+			function linkScroll() {
+				// console.log('底部导航友情链接滚动显示')
+				var liH = $(".friendly-link>li").eq(0).height();
+				$(".friendly-link").animate({"marginBottom":-liH+"px"},'slow',function(){
+					$(".friendly-link").find("li:last").css({display: 'none'})
+					$(".friendly-link").find("li:last").prependTo($(".friendly-link")).slideDown(1000)
+					$(".friendly-link").find("li:first").css({display: 'block'}).slideDown(1000)
+				})
+			}
+
+
+
+				
+            /*layer.open({
+                title: '蓝鸟插件'
+                , content: '因服务器遭受到恶意CC攻击，实在抱歉，部分用户授权可能无法使用，请耐心等待恢复！'
+            });*/
+
+
+
+			
+			$('*[lay-tips]').on('mouseenter', function(){
+				var content = $(this).attr('lay-tips');
+				this.index = layer.tips(content , this, {
+				time: -1
+				,maxWidth: 280
+				,tips: [1, '#3A3D49']
+				});
+			}).on('mouseleave', function(){
+				layer.close(this.index);
+			});
+
+
+
+
+            $('#investigation').click(function () {
+                layer.open({
+                    title: '蓝鸟小调查'
+                    ,content: '随意选择下方一个问卷进行反馈即可，感谢支持！'
+                    ,btn: ['问卷一', '问卷二']
+                    ,yes: function(index, layero){
+                        window.open("https://wj.qq.com/s2/8899037/f397");
+                    }
+                    ,btn2: function(index, layero){
+                        window.open("https://docs.qq.com/form/page/DUHVCZ3FSbW5HS2JG");
+                    }
+                    ,cancel: function(){ 
+                        //右上角关闭回调
+                        //return false 开启该代码可禁止点击该按钮关闭
+                    }
+                });
+            });
+
+
+
+            // 用户自助授权
+            $('#selfauth').click(function () {
+				var ask = layer.confirm('请选择您需要的服务？', {
+				  btn: ['授权查询','套卡开通'] //按钮
+				}, function(){
+					layer.close(ask);
+					Queryauth();
+				}, function(){
+					layer.close(ask);
+					CarMyauth();
+				});
+            });
+
+
+
+
+            // 用户查询授权
+			function Queryauth() { 
+				layer.prompt({title: '请输入需要查询的QQ', formType: 0, btn: ['查询', '取消']}, function(qq, index){
+				  layer.close(index);
+					var loading = layer.load(1);
+					$.ajax({
+						url: 'https://auth.pubiu.cn/ajax.php?mod=queryauth',
+						type: 'POST',
+						dataType: 'text',
+						header: {
+							'Content-Type': 'application/x-www-form-urlencoded',
+							//'accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+						},
+						data:{
+							'qq':qq,
+							'token':''
+						},
+						success: function (data) {
+							layer.close(loading);
+							layer.alert(data);
+						},
+						error: function (data) {
+							layer.close(loading);
+							layer.msg('请求失败' + data);
+						}
+					})
+				});
+            };
+
+
+
+
+
+            // 用户套卡开通
+			function CarMyauth() { 
+				layer.prompt({title: '请输入您的套餐卡密', formType: 0, btn: ['开通', '取消']}, function(carmy, index){
+				  layer.close(index);
+					var loading = layer.load(1);
+					$.ajax({
+						url: 'https://auth.pubiu.cn/ajax.php?mod=FieldKamiOpen_First',
+						type: 'GET',
+						dataType: 'text',
+						header: {
+							'Content-Type': 'application/x-www-form-urlencoded',
+							//'accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+						},
+						data:{
+							'kami':carmy,
+							'token':''
+						},
+						success: function (data) {
+							layer.close(loading);
+							if(data.includes('使用卡密') == false){
+								layer.alert(data,{icon: 7});
+							}else{
+								var token ='';
+								layer.open({
+									type: 2,
+									title: '使用卡密'+carmy,
+									shadeClose: true,
+									shade: 0.8,
+									area: ['90%', '90%'],
+									content: 'https://auth.pubiu.cn/ajax.php?mod=FieldKamiOpen_First&kami=' + carmy + '&token='+token
+								});
+							}
+						},
+						error: function (data) {
+							layer.close(loading);
+							layer.msg('请求失败' + data);
+						}
+					})
+				});
+            };
+
+
+
+
+            // 用户点击日志
+            $('#ulog').click(function () {
+				var index = layer.open({
+				  type: 2,
+				  title: '更新日志',
+				  content: './uplog.html',
+				  area: ['100%','100%'],
+				  maxmin: false
+				});
+				layer.full(index);
+            });
+
+
+			
+            // 用户点击授权
+            $('#auth,#auth1,#auth2,#auth3,#auth4').click(function () {
+                window.open("https://jq.qq.com/?_wv=1027&k=9vbaSzgN");
+            });
+			
+            // 用户点击下载
+            $('#down,#down1').click(function () {
+                window.open("https://www.lanzoui.com/s/xiaoniao8");
+            });
+        });
+
+    </script>
 <!-- 站长统计代码 -->
 <span style="display: none">
     <!-- 各类统计代码都放在这里…… -->
